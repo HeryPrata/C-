@@ -1,5 +1,6 @@
 #include <iostream>//biblioteca de comandos basicos de c++.
 #include <string> // biblioteca para trabalhar com strings (textos).
+#include <vector> // biblioteca para uso de vetores.
 
 // "NAMESPACE" agrupa o código em um escopo lógico, evitando conflitos de nomes.O namespace deve ser utilizado fora da função main, para que possa ser utilizado por todo o código.
 namespace matematica {
@@ -242,7 +243,7 @@ while (i < 10); // A UM USO OBRIGATORIO DE PONTO E VIRGULA QUANDO USAMOS O DO.
 std::cout << "resultdo final do indice: " << i << "\n";
 
 
-// ======================================== CASO A CONDICAO FOSSE, DESDE O INICIO, FALSA. ==============================================================
+// ================================= CASO A CONDICAO FOSSE, DESDE O INICIO, FALSA. ==============================================================
 do { // JA INICIA NO 10, RODA UMA VEZ PELO "DO" VIRA 11; E CAI NO WHILE COMO FALSO.
     std:: cout << i << "\n";
     i++;
@@ -256,17 +257,190 @@ std::cout << "resultdo final do indice: " << i << "\n";
 
 }
 
+
+void for_loop(){
+  // =============================== EXEMPLO DE ESTURURA =============================================
+    /*
+
+    for (declaração 1; declaração 2; declaração 3) {
+    // bloco de execução do codigo
+    }
+    DECLARACAO 1 = EXECUTADA UMA VEZ ANTES DO BLOCO
+    DECLARACAO 2 = DEFINE A CONDIÇÃO DO BLOCO DE CODIGO
+    DECLARACAO 3 = EXECUTADA SEMPRE APOS A EXECUÇÃO DO BLOCO
+  
+   */  
+
+  // ============================= EXEMPLO PRATICO ===================================================
+  // Contagem de 1 a 10, usando o loop for.
+
+  for (int i = 0; i < 10;i++){ // Defino o indice, defino o a parametro de rotação: < 10, e coloco o contador++ para a somar do indice. 
+    std::cout << i + 1 << "\n"; // o indice começa no 0, Para que a 10 voltas sejam representadas do 1 ao 10, colocamos o +1 no print.
+  }
+
+ // Contagem regressiva de 10 a 1, usando o contador--
+ for (int i = 10; i > 0;i--) {
+    std:: cout << i << "\n";
+ }
+// LAÇOS ALINHADO: UM LOOP DENTRO DE OUTRO LOOP, CRIANDO UM SISTEMA DE COLUNAS E LINHAS.
+ for (int i = 1; i <= 3; i++){ // i = 1, da verdadeiro, logo entramos no segundo loop, que tambem e verdadeiro, dentro do cout mostramos a conta i = 1 + j = 1, imprime 1; o loop volta pro topo e segue a logica: 1*2 e 1*3, 2*1 e 2*2 e 2*3,3*1 e 3*2 e 3*3.
+    for (int j = 1; j <= 3;j++){
+        std::cout << i * j;
+        /*
+        1x1 = 1 
+        1x2 = 2
+        1x3 = 3
+
+        2x1 = 2 
+        2x2 = 4
+        2x3 = 6
+
+        3x1 = 3 
+        3x2 = 6
+        3x3 = 9
+        
+        RESULTADO FINAL: 123
+                         246
+                         369
+        */
+    }
+    std:: cout << "\n";
+ }
+
+ // Loop foreach: conhecido como loop baseado em intervalos. E usados para percorre matrizes e, outras estruturas de dados.
+ int meu_numero[5] = {10,20,30,40,50};// Definindo a array(vetor). Array e uma estrutura de dados capaz de armazenar multiplas informações em uma unica variavel. Vetor e um tipo de array que armazena de forma sequencial, semelhante a uma lista de itens.
+ for (int num : meu_numero){ // variavel vazia, para sobrepor os numeros dentro do vetor.
+    std::cout << num << "\n";
+
+    /*
+    SIGNIFICADOS:
+    NUM = VARIAVEL DO TIPO INT, RESPONSAVEL POR ARMAZENAR OS DADOS DA VETOR.
+    : = Para cada elemento de myNumbers, coloque esse elemento em num. 
+    OU 
+    : = operador do range-based for, que indica que o laço deve percorrer 
+        todos os elementos de myNumbers, atribuindo cada um deles à variável num.
+    
+    */
+
+ }
+
+// Break e continue, podem ser usados em loops, break exerce a função de para o loop; e o continue interrompe uma sequencia e pula para a proxima.
+
+// CONTINUE
+for (int i = 1; i < 10; i++){
+    if (i == 4){
+        continue; 
+
+              // Se i for igual a 4, o continue ignora o restante desta iteração
+              // e passa imediatamente para a próxima volta do loop.
+              // Assim, o número 4 não será exibido.
+
+    std::cout << i << "\n";
+  }
+
+ }
+
+// BREAK 
+for (int i = 1; i < 10; i++){
+    if (i == 4){
+        break;; 
+
+              // Se i for igual a 4, o loop e finalizado pelo break.
+
+    std::cout << i << "\n";
+  }
+
+ }
+
+}
+
+
+void array_matriz_vetor(){
+// Como já citado, array e uma estrutura de dados capaz de armazenar varias informações em um unica variavel.
+// Matriz e um tipo de array, que se caracteriza por sepera os dados em linhas e colunas.
+// A contagem dos array sempre se iniciam com ZERO, logo ele sempre sera o primeiro elemento e o UM o segundo elemento da array.
+std:: string carros[4] = {"Volvo", "BMW","Ford","Marzda"}; // Em quesito de sixtaxe, a matriz e caracterizada por []. Dentro contem a quantidade de informações armazenadas.
+              
+              /*
+              ELEMENTO 0 = VOLVO
+              ELEMENTO 1 = BMW
+              ELEMENTO 2 = FORD
+              ELEMENTO 3 = MARZDA
+              */
+
+// Acessando um elemento de uma matriz
+std::cout << carros[0]; // Escrevemos o nome da matriz e dentro dos colchetes informamos o numero da informação que desejamos, nesse caso, o primeiro veiculo.
+
+// Alterando um elemento de uma matriz
+carros[0] = "Ferrari";
+
+// Imprimindo a mudança
+std::cout << carros[1];
+
+// Para mostramos todos os elementos de uma matriz, usamos o laço de repetição, para percorrer todas as informações armazenadas na matriz.
+for (int i = 0; i < 4;i++){
+    std::cout << carros[i] << "\n";
+
+}
+
+// Podemos, também, usar o loop for-each para percorrer as matrizes
+for (int num : carros){
+    std::cout << num << "\n";
+}
+
+//================================== VETOR ===========================================================
+// Vetor são, em c++, matrizes redimensionais: capaz de adicionar, remover e modificar elementos conforme o necessario.
+// O vetor necessita de import de biblioteca: <vector>
+
+// Declarando um vetor com tres elementos
+std::vector<string> carros = {"McLaren","Porche","BMW"};
+
+                /* O TIPO DA INFORMAÇÃO E COLOCADA DENTRO DOS <>
+                   O VETOR, EM QUESITO SIXTAXE, E CARACTERIZADO PELAS CHAVES {}
+
+
+                */
+
+//Adicionando um novo elemento no vetor
+carros.push_back("Tesla");
+                
+                /* Push_back() é a função responsavel por adicionar mais elemento no final do vetor
+                   Para remover um elementos que se encontra na extremidade, ultima posicao, usamos a função .pop_back()
+                   Para localizar um elementos em especificos, podemos usar o .at()
+                
+                */
+
+// Removendo o ultimo elemento da tabela
+carros.pop_back(); 
+
+// localizando um elemento no vetor
+std::cout << carros.at(0); // localizando o primeiro veiculo
+
+//Descobrindo quantos elementos tem no vetor, usando a funcao .size()
+std:: cout << carros.size();// pode ser usado em um loop, como parametro, para mostrar todos os elementos de uma tabela que recebe modificacoes constantes.
+
+// Descobrindo se o vetor esta vazio ou se contem elementos, usando o .empty()
+std:: cout << carros.empty();
+
+                 /*
+                 A FUNCÃO .EMPTY() RETORNA 1 (TRUE) SE O VETOR ESTIVER VAZIO E 0 (FALSO) SE CONTIVER UM OU MAIS ELEMENTOS.  
+                 */
+
+}
+
+
+int main()
 // função principal do programa. 
 // int e o resultado que deve voltar para a funcão. 0 e 1. Semalhante a uma função boolean.
 // as funções VOID são funcões sem retorno que usarei para testar cada parte do codigo dentro da main, e separando conteudo por conteudo.
-int main()
+
 {
-    
-    std:: cout << "Teste De Funcão";
+    for_loop();
+    std:: cout << "Teste De Funcão\n";
     teste_while();// chamando a funcão. Não e necessaria escreve o seu titulo.
 
     return 0; // finalizando o programa, devolvendo para função o valor 0
-
+    
 }
 
 
